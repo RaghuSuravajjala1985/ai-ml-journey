@@ -12,8 +12,10 @@ def slugify(titile:str) ->str:
 
 # 2. Parsing -- C#: int.TryParse(text, out var value) ? value : null
 def try_parse_int(text:str | None) ->int | None:
-    """Return the int or None when the text is not whole number."""
-    if not text:
+    """Like C# int.TryParse: returns the number, or None if it isn't a whole number."""
+    try:
+        return int(text)
+    except (ValueError, TypeError):
         return None
 
     # 3. Date helper -- C#: count weekdays between two DateTimes
